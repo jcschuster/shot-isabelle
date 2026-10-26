@@ -3,7 +3,7 @@ theory Shot
 begin
 
 text \<open>
-  Proof method \<open>shot\<close>: sends the subgoal and relevant facts to Shot---0.1.4 on SystemOnTPTP
+  Proof method \<open>shot\<close>: sends the subgoal and relevant facts to the current Shot on SystemOnTPTP
   via Sledgehammer. Shot's proofs are not TSTP, so Isabelle cannot reconstruct them; a
   "Theorem" verdict is trusted through the oracle \<open>shot_oracle\<close>.
 
@@ -33,7 +33,7 @@ fun without_proof_delims (c : atp_config) : atp_config =
    good_max_new_mono_instances = #good_max_new_mono_instances c}
 
 val _ =
-  remote_atp "shot" "Shot" ["0.1.4"] [] [] ATP_Problem.Hypothesis false
+  remote_atp "shot" "Shot" [] [] [] ATP_Problem.Hypothesis false
     (K ((1000, false, false, 32, "mepo"),
         (ATP_Problem.THF (ATP_Problem.Monomorphic, {with_ite = false, with_let = false},
            ATP_Problem.THF_Without_Choice),
